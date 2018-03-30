@@ -37,9 +37,9 @@ class Core
         $this->loadingConfig();
         if (USE_DATABASE) $this->loadingDatabases();
         if (USE_LOGIN && isset($this->DB['DBconnect'])) $this->loadingEmvcLogin($this->DB['DBconnect']);
-        if (USE_HTTP_REQUEST) $this->loadingHttpRequest();
-        if (USE_EMAIL) $this->loadingEmail();
-        if (USE_MENU) $this->loadingMenu();
+        if (USE_HTTP_REQUEST) $this->loadingEmvcHttpRequest();
+        if (USE_EMAIL) $this->loadingEmvcEmail();
+        if (USE_MENU) $this->loadingEmvcMenu();
         $this->startRouting();
     }
 
@@ -104,7 +104,7 @@ class Core
     /**
      * Loading the EasyMVC HttpRequest class
      */
-    private function loadingHttpRequest()
+    private function loadingEmvcHttpRequest()
     {
         $this->HttpRequest = new HttpRequest();
     }
@@ -112,7 +112,7 @@ class Core
     /**
      * Loading the EasyMVC Email class
      */
-    private function loadingEmail()
+    private function loadingEmvcEmail()
     {
         $this->Email = new Email();
     }
@@ -120,7 +120,7 @@ class Core
     /**
      * Loading the EasyMVC Menu class
      */
-    private function loadingMenu()
+    private function loadingEmvcMenu()
     {
         $this->Menu = new Menu();
     }
