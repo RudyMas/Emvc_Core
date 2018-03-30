@@ -1,0 +1,27 @@
+{
+  "name": "easymvc/core",
+  "description": "The Core Class for the EasyMVC Framework",
+  "type": "library",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Rudy Mas",
+      "email": "rudy.mas@rmsoft.be",
+      "homepage": "http://www.rmsoft.be",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">= 7.1",
+    "rudymas/router": "*"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ],
+    "psr-4": {
+      "EasyMVC\\Core\\": "src/"
+    }
+  }
+}
