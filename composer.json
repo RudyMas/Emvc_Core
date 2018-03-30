@@ -15,6 +15,14 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">= 7.1",
+    "easymvc/controller": "*",
+    "easymvc/email": "*",
+    "easymvc/httprequest": "*",
+    "easymvc/login": "*",
+    "rudymas/manipulator": "*",
+    "easymvc/menu": "*",
+    "rudymas/pdo-ext": "*",
+    "easymvc/repository": "*",
     "rudymas/router": "*"
   },
   "autoload": {
