@@ -36,7 +36,7 @@ class Core
         $this->settingUpRootMapping();
         $this->loadingConfig();
         if (USE_DATABASE) $this->loadingDatabases();
-        if (USE_LOGIN && isset($this->DB['DBconnect'])) $this->loadingEmvcLogin($this->DB['DBconnect']);
+        if (USE_LOGIN && isset($this->CoreDB['DBconnect'])) $this->loadingEmvcLogin($this->CoreDB['DBconnect']);
         if (USE_HTTP_REQUEST) $this->loadingEmvcHttpRequest();
         if (USE_EMAIL) $this->loadingEmvcEmail();
         if (USE_MENU) $this->loadingEmvcMenu();
@@ -86,7 +86,7 @@ class Core
         require_once('config/database.php');
         foreach ($database as $connect) {
             $object = $connect['objectName'];
-            $this->DB[$object] = new DBconnect($connect['dbHost'], $connect['port'], $connect['dbUsername'],
+            $this->CoreDB[$object] = new DBconnect($connect['dbHost'], $connect['port'], $connect['dbUsername'],
                 $connect['dbPassword'], $connect['dbName'], $connect['dbCharset'], $connect['dbType']);
         }
     }
@@ -98,7 +98,7 @@ class Core
      */
     private function loadingEmvcLogin(DBconnect $DBconnect)
     {
-        $this->Login = new Login($DBconnect, new Text(), USE_EMAIL_LOGIN);
+        $this->CoreLogin = new Login($DBconnect, new Text(), USE_EMAIL_LOGIN);
     }
 
     /**
@@ -106,7 +106,7 @@ class Core
      */
     private function loadingEmvcHttpRequest()
     {
-        $this->HttpRequest = new HttpRequest();
+        $this->CoreHttpRequest = new HttpRequest();
     }
 
     /**
@@ -114,7 +114,7 @@ class Core
      */
     private function loadingEmvcEmail()
     {
-        $this->Email = new Email();
+        $this->CoreEmail = new Email();
     }
 
     /**
@@ -122,7 +122,7 @@ class Core
      */
     private function loadingEmvcMenu()
     {
-        $this->Menu = new Menu();
+        $this->CoreMenu = new Menu();
     }
 
     /**
