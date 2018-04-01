@@ -17,16 +17,16 @@ use RudyMas\Router\EasyRouter;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2018, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.1.0.0
+ * @version     0.1.0.1
  * @package     EasyMVC\Core
  */
 class Core
 {
-    public $DB;
-    public $Login;
-    public $HttpRequest;
-    public $Email;
-    public $Menu;
+    public $CoreDB;
+    public $CoreLogin;
+    public $CoreHttpRequest;
+    public $CoreEmail;
+    public $CoreMenu;
 
     /**
      * Core constructor.
