@@ -17,12 +17,12 @@ use RudyMas\Router\EasyRouter;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2018, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.0.2
+ * @version     0.1.0.0
  * @package     EasyMVC\Core
  */
 class Core
 {
-    private $DB;
+    public $DB;
     public $Login;
     public $HttpRequest;
     public $Email;
@@ -130,11 +130,7 @@ class Core
      */
     private function startRouting()
     {
-        if (isset($this->DB['DBconnect'])) {
-            $router = new EasyRouter($this->DB['DBconnect']);
-        } else {
-            $router = new EasyRouter();
-        }
+        $router = new EasyRouter($this);
         require_once('config/router.php');
         try {
             $router->execute();
