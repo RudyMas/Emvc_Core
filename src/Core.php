@@ -6,10 +6,8 @@ use EasyMVC\Email\Email;
 use EasyMVC\HttpRequest\HttpRequest;
 use EasyMVC\Login\Login;
 use EasyMVC\Menu\Menu;
-use Exception;
 use RudyMas\Manipulator\Text;
 use RudyMas\PDOExt\DBconnect;
-use RudyMas\Router\EasyRouter;
 
 /**
  * Class Core (PHP version 7.1)
@@ -17,16 +15,16 @@ use RudyMas\Router\EasyRouter;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2018, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.1.0.1
+ * @version     0.1.1.5
  * @package     EasyMVC\Core
  */
 class Core
 {
-    public $CoreDB;
-    public $CoreLogin;
-    public $CoreHttpRequest;
-    public $CoreEmail;
-    public $CoreMenu;
+    public $DB;
+    public $Login;
+    public $HttpRequest;
+    public $Email;
+    public $Menu;
 
     /**
      * Core constructor.
@@ -36,11 +34,10 @@ class Core
         $this->settingUpRootMapping();
         $this->loadingConfig();
         if (USE_DATABASE) $this->loadingDatabases();
-        if (USE_LOGIN && isset($this->CoreDB['DBconnect'])) $this->loadingEmvcLogin($this->CoreDB['DBconnect']);
+        if (USE_LOGIN && isset($this->DB['DBconnect'])) $this->loadingEmvcLogin($this->DB['DBconnect']);
         if (USE_HTTP_REQUEST) $this->loadingEmvcHttpRequest();
         if (USE_EMAIL) $this->loadingEmvcEmail();
         if (USE_MENU) $this->loadingEmvcMenu();
-        $this->startRouting();
     }
 
     /**
@@ -86,7 +83,7 @@ class Core
         require_once('config/database.php');
         foreach ($database as $connect) {
             $object = $connect['objectName'];
-            $this->CoreDB[$object] = new DBconnect($connect['dbHost'], $connect['port'], $connect['dbUsername'],
+            $this->DB[$object] = new DBconnect($connect['dbHost'], $connect['port'], $connect['dbUsername'],
                 $connect['dbPassword'], $connect['dbName'], $connect['dbCharset'], $connect['dbType']);
         }
     }
@@ -98,7 +95,7 @@ class Core
      */
     private function loadingEmvcLogin(DBconnect $DBconnect)
     {
-        $this->CoreLogin = new Login($DBconnect, new Text(), USE_EMAIL_LOGIN);
+        $this->Login = new Login($DBconnect, new Text(), USE_EMAIL_LOGIN);
     }
 
     /**
@@ -106,7 +103,7 @@ class Core
      */
     private function loadingEmvcHttpRequest()
     {
-        $this->CoreHttpRequest = new HttpRequest();
+        $this->HttpRequest = new HttpRequest();
     }
 
     /**
@@ -114,7 +111,7 @@ class Core
      */
     private function loadingEmvcEmail()
     {
-        $this->CoreEmail = new Email();
+        $this->Email = new Email();
     }
 
     /**
@@ -122,22 +119,7 @@ class Core
      */
     private function loadingEmvcMenu()
     {
-        $this->CoreMenu = new Menu();
-    }
-
-    /**
-     * Start loading the website by use of routing
-     */
-    private function startRouting()
-    {
-        $router = new EasyRouter($this);
-        require_once('config/router.php');
-        try {
-            $router->execute();
-        } catch (Exception $exception) {
-            http_response_code(500);
-            print($exception->getMessage());
-        }
+        $this->Menu = new Menu();
     }
 }
 
