@@ -22,7 +22,7 @@
     "easymvc/menu": "*",
     "rudymas/pdo-ext": "*",
     "easymvc/repository": "*",
-    "rudymas/router": "*"
+    "easymvc/router": "*"
   },
   "autoload": {
     "classmap": [
