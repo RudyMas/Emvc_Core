@@ -15,7 +15,7 @@ use RudyMas\PDOExt\DBconnect;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2018, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.1.2.6
+ * @version     0.1.3.7
  * @package     EasyMVC\Core
  */
 class Core
@@ -31,6 +31,7 @@ class Core
      */
     public function __construct()
     {
+        define('CORE_VERSION', '0.1.3.7');
         $this->settingUpRootMapping();
         $this->loadingConfig();
         if (USE_DATABASE) $this->loadingDatabases();
