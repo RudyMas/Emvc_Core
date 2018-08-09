@@ -15,7 +15,7 @@ use RudyMas\PDOExt\DBconnect;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2018, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.2.0.8
+ * @version     0.2.1.9
  * @package     EasyMVC\Core
  */
 class Core
@@ -31,7 +31,7 @@ class Core
      */
     public function __construct()
     {
-        define('CORE_VERSION', '0.2.0.8');
+        define('CORE_VERSION', '0.2.1.9');
         $this->settingUpRootMapping();
         $this->loadingConfig();
         if (USE_DATABASE) $this->loadingDatabases();
@@ -79,9 +79,15 @@ class Core
     private function loadingDatabases()
     {
         $database = [];
-        if (!is_file(SYSTEM_ROOT . '/config/database.php'))
-            @copy(SYSTEM_ROOT . '/config/database.sample.php', SYSTEM_ROOT . '/config/database.php');
-        require_once('config/database.php');
+        if ($_SERVER['HTTP_HOST'] == SERVER_DEVELOP) {
+            if (!is_file(SYSTEM_ROOT . '/config/database.local.php'))
+                @copy(SYSTEM_ROOT . '/config/database.sample.php', SYSTEM_ROOT . '/config/database.local.php');
+            require_once('config/database.local.php');
+        } else {
+            if (!is_file(SYSTEM_ROOT . '/config/database.php'))
+                @copy(SYSTEM_ROOT . '/config/database.sample.php', SYSTEM_ROOT . '/config/database.php');
+            require_once('config/database.php');
+        }
         foreach ($database as $connect) {
             $object = $connect['objectName'];
             $this->DB[$object] = new DBconnect($connect['dbHost'], $connect['port'], $connect['dbUsername'],
@@ -123,5 +129,3 @@ class Core
         $this->Menu = new Menu();
     }
 }
-
-/** End of File: Core.php **/
