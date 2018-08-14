@@ -31,7 +31,7 @@ class Core
      */
     public function __construct()
     {
-        define('CORE_VERSION', '0.3.0.10');
+        define('CORE_VERSION', '0.3.1.11');
         $this->settingUpRootMapping();
         $this->loadingConfig();
         if (USE_DATABASE) $this->loadingDatabases();
