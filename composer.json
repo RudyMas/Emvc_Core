@@ -16,7 +16,7 @@
     "php": ">= 7.1",
     "easymvc/email": "^2",
     "easymvc/httprequest": "^1",
-    "easymvc/login": "^3",
+    "easymvc/login": "^4",
     "rudymas/manipulator": "^1",
     "easymvc/menu": "^1",
     "rudymas/pdo-ext": "^5"
