@@ -18,7 +18,7 @@
     "easymvc/httprequest": "^1",
     "easymvc/login": "^4",
     "rudymas/manipulator": "^1",
-    "easymvc/menu": "^1",
+    "easymvc/menu": "^2",
     "rudymas/pdo-ext": "^5"
   },
   "autoload": {
