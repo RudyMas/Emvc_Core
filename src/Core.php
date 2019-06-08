@@ -6,6 +6,8 @@ use EasyMVC\Email\Email;
 use EasyMVC\HttpRequest\HttpRequest;
 use EasyMVC\Login\Login;
 use EasyMVC\Menu\Menu;
+use EasyMVC\Router\Router;
+use Exception;
 use RudyMas\Manipulator\Text;
 use RudyMas\PDOExt\DBconnect;
 
@@ -15,7 +17,7 @@ use RudyMas\PDOExt\DBconnect;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2018, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.4.0.13
+ * @version     0.5.0.14
  * @package     EasyMVC\Core
  */
 class Core
@@ -31,14 +33,35 @@ class Core
      */
     public function __construct()
     {
-        define('CORE_VERSION', '0.4.0.12');
+        define('CORE_VERSION', '0.5.0.14');
+
         $this->settingUpRootMapping();
+
+        require_once(BASE_URL . 'config/version.php');
+        require_once(BASE_URL . 'config/server.php');
+        require_once(BASE_URL . 'config/config.website.php');
+        date_default_timezone_set(TIME_ZONE);
+
         $this->loadingConfig();
         if (USE_DATABASE) $this->loadingDatabases();
         if (USE_LOGIN && isset($this->DB['DBconnect'])) $this->loadingEmvcLogin($this->DB['DBconnect']);
         if (USE_HTTP_REQUEST) $this->loadingEmvcHttpRequest();
         if (USE_EMAIL) $this->loadingEmvcEmail();
         if (USE_MENU) $this->loadingEmvcMenu();
+
+        $Router = new Router($this);
+        require_once(BASE_URL . 'config/router.php');
+        try {
+            $Router->execute();
+        } catch (Exception $exception) {
+            http_response_code(500);
+            print('EasyMVC : Something went wrong.<br><br>');
+            print($exception->getMessage());
+            print('<br><br>');
+            print('<pre>');
+            print_r($exception);
+            print('</pre>');
+        }
     }
 
     /**
