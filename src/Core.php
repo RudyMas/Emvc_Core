@@ -15,9 +15,9 @@ use RudyMas\PDOExt\DBconnect;
  * Class Core (PHP version 7.1)
  *
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
- * @copyright   2018, rmsoft.be. (http://www.rmsoft.be/)
+ * @copyright   2018-2019, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.5.0.14
+ * @version     0.5.0.15
  * @package     EasyMVC\Core
  */
 class Core
@@ -33,13 +33,13 @@ class Core
      */
     public function __construct()
     {
-        define('CORE_VERSION', '0.5.0.14');
+        define('CORE_VERSION', '0.5.0.15');
 
         $this->settingUpRootMapping();
 
-        require_once(BASE_URL . 'config/version.php');
-        require_once(BASE_URL . 'config/server.php');
-        require_once(BASE_URL . 'config/config.website.php');
+        require_once('config/version.php');
+        require_once('config/server.php');
+        require_once('config/config.website.php');
         date_default_timezone_set(TIME_ZONE);
 
         $this->loadingConfig();
@@ -50,7 +50,7 @@ class Core
         if (USE_MENU) $this->loadingEmvcMenu();
 
         $Router = new Router($this);
-        require_once(BASE_URL . 'config/router.php');
+        require_once('config/router.php');
         try {
             $Router->execute();
         } catch (Exception $exception) {
