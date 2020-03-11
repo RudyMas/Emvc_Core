@@ -15,9 +15,9 @@ use RudyMas\PDOExt\DBconnect;
  * Class Core (PHP version 7.1)
  *
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
- * @copyright   2018-2019, rmsoft.be. (http://www.rmsoft.be/)
+ * @copyright   2018-2020, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.5.0.15
+ * @version     0.5.1.0
  * @package     EasyMVC\Core
  */
 class Core
@@ -33,7 +33,7 @@ class Core
      */
     public function __construct()
     {
-        define('CORE_VERSION', '0.5.0.15');
+        define('CORE_VERSION', '0.5.1.0');
 
         $this->settingUpRootMapping();
 
@@ -73,9 +73,18 @@ class Core
     private function settingUpRootMapping()
     {
         $arrayServerName = explode('.', $_SERVER['SERVER_NAME']);
+        $numberOfServerNames = count($arrayServerName);
+        unset($arrayServerName[$numberOfServerNames-2]);
+        unset($arrayServerName[$numberOfServerNames-1]);
+
         $scriptName = rtrim(str_replace($arrayServerName, '', dirname($_SERVER['SCRIPT_NAME'])), '/\\');
         define('BASE_URL', $scriptName);
-        define('SYSTEM_ROOT', $_SERVER['DOCUMENT_ROOT'] . BASE_URL);
+
+        $extraPath = '';
+        for ($i = 0; $i < count($arrayServerName); $i++) {
+            $extraPath .= '/' . $arrayServerName[$i];
+        }
+        define('SYSTEM_ROOT', $_SERVER['DOCUMENT_ROOT'] . $extraPath . BASE_URL);
     }
 
     /**

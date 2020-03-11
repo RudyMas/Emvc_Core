@@ -30,7 +30,7 @@
       "src/"
     ],
     "psr-4": {
-      "EasyMVC\\Core\\": "src/"
+      "EasyMVC\\": "src/"
     }
   }
 }
