@@ -12,7 +12,7 @@ use RudyMas\PDOExt\DBconnect;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2018-2020, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.5.1.2
+ * @version     0.5.1.3
  * @package EasyMVC
  */
 class Core
@@ -28,7 +28,7 @@ class Core
      */
     public function __construct()
     {
-        define('CORE_VERSION', '0.5.1.1');
+        define('CORE_VERSION', '0.5.1.3');
 
         $this->settingUpRootMapping();
 

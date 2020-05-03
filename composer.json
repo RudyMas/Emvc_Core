@@ -21,7 +21,7 @@
     "easymvc/menu": "^2",
     "easymvc/model": "^1",
     "easymvc/repository": "^2",
-    "easymvc/router": "^1",
+    "easymvc/router": "^1.1",
     "rudymas/manipulator": "^1",
     "rudymas/pdo-ext": "^5"
   },
