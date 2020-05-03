@@ -2,11 +2,6 @@
 
 namespace EasyMVC;
 
-use EasyMVC\Email\Email;
-use EasyMVC\HttpRequest\HttpRequest;
-use EasyMVC\Login\Login;
-use EasyMVC\Menu\Menu;
-use EasyMVC\Router\Router;
 use Exception;
 use RudyMas\Manipulator\Text;
 use RudyMas\PDOExt\DBconnect;
@@ -17,7 +12,7 @@ use RudyMas\PDOExt\DBconnect;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2018-2020, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     0.5.1.1
+ * @version     0.5.1.2
  * @package EasyMVC
  */
 class Core

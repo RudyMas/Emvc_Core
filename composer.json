@@ -18,11 +18,11 @@
     "easymvc/email": "^2",
     "easymvc/httprequest": "^1",
     "easymvc/login": "^4",
+    "easymvc/menu": "^2",
     "easymvc/model": "^1",
     "easymvc/repository": "^2",
     "easymvc/router": "^1",
     "rudymas/manipulator": "^1",
-    "easymvc/menu": "^2",
     "rudymas/pdo-ext": "^5"
   },
   "autoload": {
