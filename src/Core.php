@@ -28,7 +28,7 @@ class Core
      */
     public function __construct()
     {
-        define('CORE_VERSION', '0.5.1.3');
+        define('CORE_VERSION', '0.5.2.1');
 
         $this->settingUpRootMapping();
 
