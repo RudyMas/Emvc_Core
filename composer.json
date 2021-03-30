@@ -16,7 +16,7 @@
     "php": ">= 7.2",
     "easymvc/controller": "^1",
     "easymvc/email": "^2",
-    "easymvc/httprequest": "^1",
+    "easymvc/httprequest": "^7",
     "easymvc/login": "^4",
     "easymvc/menu": "^2",
     "easymvc/model": "^1",

@@ -10,9 +10,9 @@ use RudyMas\DBconnect;
  * Class Core (PHP version 7.2)
  *
  * @author Rudy Mas <rudy.mas@rmsoft.be>
- * @copyright 2018-2020, rmsoft.be. (http://www.rmsoft.be/)
+ * @copyright 2018-2021, rmsoft.be. (http://www.rmsoft.be/)
  * @license https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version 0.5.2.1
+ * @version 0.5.2.2
  * @package EasyMVC
  */
 class Core
@@ -28,7 +28,7 @@ class Core
      */
     public function __construct()
     {
-        define('CORE_VERSION', '0.5.2.1');
+        define('CORE_VERSION', '0.5.2.2');
 
         $this->settingUpRootMapping();
 
