@@ -20,7 +20,7 @@
     "easymvc/login": "^8",
     "easymvc/menu": "^2",
     "easymvc/model": "^1",
-    "easymvc/repository": "^2",
+    "easymvc/repository": "^8",
     "easymvc/router": "^1",
     "rudymas/manipulator": "^1",
     "rudymas/pdo-ext": "^8.1"
