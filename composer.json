@@ -17,7 +17,7 @@
     "easymvc/controller": "^1",
     "easymvc/email": "^2",
     "easymvc/httprequest": "^7",
-    "easymvc/login": "^4",
+    "easymvc/login": "^8",
     "easymvc/menu": "^2",
     "easymvc/model": "^1",
     "easymvc/repository": "^2",
